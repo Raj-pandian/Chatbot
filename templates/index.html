@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<title>Kanali ChatBot</title>
+<style>
+/* User input text style */
+.userText {
+font-family: 'Roboto';
+font-size: 18px;
+font-weight: bold;
+color: #581845 ;
+}
+
+/* Bot output text style */
+.userBot {
+font-family: 'Roboto';
+font-size: 18px;
+font-weight: bold;
+color: #0c077e ;
+}
+
+/* Clear text style */
+.clearText {
+font-family: 'Roboto';
+font-size: 14px;
+font-weight: italic;
+color: #581845 ;
+}
+
+/* Title bar text style */
+.titleBar {
+height:20px;
+width:800px;
+padding: 5px 5px 5px 5px;
+border: 5px solid #0A4E63;
+font-family: 'Roboto';
+font-size: 22px;
+background: #0A4E63;
+color:#FFFFE6;
+font-weight: bold;
+}
+
+/* Chat window style */
+.divScroll {
+overflow-x: hidden; /* Hide horizontal scrollbar */
+overflow-y: scroll; /* Add vertical scrollbar */
+height:400px;
+width:800px;
+border: 5px outset #0A4E63;
+padding: 5px 5px 5px 5px;
+}
+
+/* Text box style */
+input[type=text] {
+  width: 53%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  font-family: 'Roboto';
+  font-size: 16px;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+/* Button style */
+.button {
+  background-color: #0A4E63;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: bold;
+}
+
+</style>
+</head>
+<body>
+<center>
+    <div class="titleBar">. . KANALI . .</div>
+
+    <div class="divScroll">
+        <div align="left">
+          {% for message in messages %}
+
+            {% if  loop.index % 2 == 1: %}
+               <div class="userText"> You: {{ message }} </div>
+            {% endif %}
+
+            {% if  loop.index % 2 == 0: %}
+               <div class="userBot" > Bot: {{ message }} </div>
+            {% endif %}
+
+          {% endfor %}
+        </div>
+    </div>
+    <form action="/home" method="POST">
+        <div>
+            <input type="text" name="user_input", placeholder="Ask Me!">
+            <button class="button" type="submit">Send</button>
+        </div>
+        <form action="/clear" method="POST">
+            <div class="clearText">To clear the chat history <a href="{{ url_for('clear') }}">click here</a></div>
+        </form>
+    </form>
+</center>
+</body>
+</html>

@@ -21,7 +21,6 @@ with open("intents.json") as file:
     data = json.load(file)
 
 try:
-    # when you add a new data in json file then simply put x in here it will run the except part
     with open("data.pickle", "rb") as f:
         words, labels, training, output = pickle.load(f)
 except:
@@ -42,12 +41,8 @@ except:
 
     words = [stemmer.stem(w.lower()) for w in words if w != "?"]
     words = sorted(list(set(words)))
-    # Removing duplicate words
 
     labels = sorted(labels)
-
-    # Nural networks only understand numbers., we have string in intent file.
-    # bags of words it reperesnet any given patten. bages of words is one hard encoding
 
     training = []
     output = []
@@ -87,8 +82,6 @@ net = tflearn.regression(net)
 
 model = tflearn.DNN(net)
 
-# If you want to retrain the bot just delete
-# model.*  and data.pickel files then comment the try and model.load
 try:
     model.load("model.tflearn")
 except:

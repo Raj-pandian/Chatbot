@@ -11,9 +11,9 @@ We have a Input intent file as a input, it has patterns and responses. The bot o
 
 Datasets
 
-    JSON file which ahas patterns and responses 
+    JSON file which has patterns and responses 
 
-Build abd Training the chatbot
+Build and Training the chatbot
 
 	Below are the chatbot evaluation steps,
 	1. Data Exploration:   Know the data
@@ -33,7 +33,7 @@ Build abd Training the chatbot
 
 		Then using this model we can predict the output.
 	
-Using Flask to create a Front End UI.
+Created the Front End UI using Flask.
 
 Technology Stack
 
